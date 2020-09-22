@@ -14,8 +14,6 @@ function ContactList(props){
           <ContactItem 
             item={item}
             key={item.id}
-            editContact={props.editContact}
-            removeContact={props.removeContact}
           />
         ) 
       })}

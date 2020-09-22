@@ -9,10 +9,10 @@ export const addContact=(contact)=>{
   }
 }
 
-export const deleteContact=(contact)=>{
+export const deleteContact=(id)=>{
   return{
     type:DELETE_CONTACT,
-    payload:contact
+    payload:id
   }
 }
 

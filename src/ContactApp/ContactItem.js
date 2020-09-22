@@ -1,14 +1,19 @@
 import React, {useState} from 'react'
+import { useDispatch } from 'react-redux';
+import {deleteContact} from '../redux/actions'
+import {editContact} from '../redux/actions'
 
 function ContactItem(props) {
   const [name, setName] = useState(props.item.name);
   const [lastName, setLast] = useState(props.item.lastName);
   const [number, setNumber]=useState(props.item.number);
   const [isEdit, setEdit] = useState(false);
+
+  const dispatch = useDispatch();
  
   const handleDelete = (e) => {
     e.stopPropagation();
-    props.removeContact(props.item.id)
+    dispatch(deleteContact(props.item.id));
   }
   const handleEditClick = (e) => {
     e.stopPropagation();
@@ -16,12 +21,12 @@ function ContactItem(props) {
   }
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    props.editContact({
+    dispatch(editContact({
       ...props.item,
       name,
       lastName,
       number
-    })
+    }))
     setEdit(false)
   }
   const handleEditInput = (e) => {

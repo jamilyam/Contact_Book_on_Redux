@@ -6,30 +6,27 @@ const INIT_CONTACT_STATE={
 }
 
 const ContactReducer=(state=INIT_CONTACT_STATE,action)=>{
+  let contacts = [...state.contacts]
   switch (action.type){
     case ADD_CONTACT:
+      contacts.push(action.payload)
       return {
         ...state,
-        contacts:[
-          ...state.contacts,
-          action.payload
-        ]
+        contacts
       };
     case DELETE_CONTACT:
+      contacts = contacts.filter(item=>item.id!==action.payload);
       return {
         ...state,
-        contacts:[
-          ...state.contacts,
-          action.payload
-        ]
+        contacts
       };
     case EDIT_CONTACT:
+      contacts = contacts.map(item=>
+        (item.id===action.payload.id) ? action.payload : item
+      )
       return {
         ...state,
-        contacts:[
-          ...state.contacts,
-          action.payload
-        ]
+        contacts
       };
     default:
       return state      
