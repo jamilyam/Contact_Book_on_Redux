@@ -1,35 +1,41 @@
-import { ADD_CONTACT, DELETE_CONTACT, EDIT_CONTACT } from "./constants"
-import { combineReducers } from "redux";
+import {
+  FETCH_DATA,
+  FETCH_DATA_FAILED,
+  FETCH_DATA_SUCCESS
+} from "./constants"
+import {
+  combineReducers
+} from "redux";
 
-const INIT_CONTACT_STATE={
-  contacts:[],
+const INIT_CONTACT_STATE = {
+  contacts: [],
+  loading: false,
+  error: null
 }
 
-const ContactReducer=(state=INIT_CONTACT_STATE,action)=>{
-  let contacts = [...state.contacts]
-  switch (action.type){
-    case ADD_CONTACT:
-      contacts.push(action.payload)
+const ContactReducer = (state = INIT_CONTACT_STATE, action) => {
+  switch (action.type) {
+    case FETCH_DATA:
       return {
         ...state,
-        contacts
+        loading: true
       };
-    case DELETE_CONTACT:
-      contacts = contacts.filter(item=>item.id!==action.payload);
+    case FETCH_DATA_SUCCESS:
       return {
         ...state,
-        contacts
+        contacts: action.payload,
+          loading: false,
+          error: null
       };
-    case EDIT_CONTACT:
-      contacts = contacts.map(item=>
-        (item.id===action.payload.id) ? action.payload : item
-      )
+    case FETCH_DATA_FAILED:
       return {
         ...state,
-        contacts
+        contacts: [],
+          loading: false,
+          error: action.payload
       };
     default:
-      return state      
+      return state
   }
 }
 

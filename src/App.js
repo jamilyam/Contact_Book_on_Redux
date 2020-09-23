@@ -1,10 +1,11 @@
 import React from 'react';
-import ContactBook from './ContactApp/ContactBook'
+import Routes from './routes/index'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return(
     <div>
-      <ContactBook/>
+      <Routes/>
     </div>
   )
 }

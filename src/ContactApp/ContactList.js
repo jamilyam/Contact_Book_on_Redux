@@ -1,14 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ContactItem from './ContactItem';
-import {useSelector} from 'react-redux'
+import {useSelector,useDispatch} from 'react-redux'
+import {fetchData} from '../redux/actions';
 
-function ContactList(props){
-  const state = useSelector((state)=>{
+function ContactList() {
+  const state = useSelector((state) => {
     return state.contact
   })
 
-  return(
-    <div>
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchData())
+  }, [dispatch])
+
+  return ( 
+     <div>
       {state.contacts.map((item)=>{
         return(
           <ContactItem 
@@ -17,7 +24,7 @@ function ContactList(props){
           />
         ) 
       })}
-    </div>
+    </div>      
   )
 }
 export default ContactList;

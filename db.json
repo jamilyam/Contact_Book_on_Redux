@@ -1,0 +1,28 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Jamilya",
+      "lastName": "Mambetalieva",
+      "number": "0770650005"
+    },
+    {
+      "id": 2,
+      "name": "Aisulu",
+      "lastName": "Mambetalieva",
+      "number": "0775983823"
+    },
+    {
+      "id": 1600875623702,
+      "name": "Talai",
+      "lastName": "Aliev",
+      "number": "708549209"
+    },
+    {
+      "id": 1600875920176,
+      "name": "Marat",
+      "lastName": "Mambetaliev",
+      "number": "775580777"
+    }
+  ]
+}
