@@ -14,7 +14,9 @@ class ContactForm extends Component {
       id: Date.now(),
       name: this.state.name,
       lastName: this.state.lastName,
-      number: this.state.number
+      number: this.state.number,
+      createdAt: new Date().toJSON(),
+      updatedAt: new Date().toJSON(),
     };
     this.props.addContact(contact);
     this.setState({

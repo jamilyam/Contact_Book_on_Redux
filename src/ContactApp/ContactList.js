@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import ContactItem from './ContactItem';
 import {useSelector,useDispatch} from 'react-redux'
 import {fetchData} from '../redux/actions';
+import { useLocation } from 'react-router-dom';
 
 function ContactList() {
   const state = useSelector((state) => {
@@ -9,10 +10,15 @@ function ContactList() {
   })
 
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(fetchData())
-  }, [dispatch])
+  }, [location])
+
+  if(!state?.contacts?.length){
+    return <h2>Your Contact List is empty</h2>
+  }
 
   return ( 
      <div>

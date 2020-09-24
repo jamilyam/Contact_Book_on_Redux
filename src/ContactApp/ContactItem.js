@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { useDispatch } from 'react-redux';
 import {deleteContact} from '../redux/actions'
 import {editContact} from '../redux/actions'
+import { useHistory } from 'react-router-dom';
 
 function ContactItem(props) {
   const [name, setName] = useState(props.item.name);
@@ -10,6 +11,7 @@ function ContactItem(props) {
   const [isEdit, setEdit] = useState(false);
 
   const dispatch = useDispatch();
+  const history = useHistory();
  
   const handleDelete = (e) => {
     e.stopPropagation();
@@ -25,7 +27,8 @@ function ContactItem(props) {
       ...props.item,
       name,
       lastName,
-      number
+      number,
+      updatedAt: new Date().toJSON(),
     }))
     setEdit(false)
   }
@@ -38,10 +41,13 @@ function ContactItem(props) {
   const handNumberInput = (e) => {
     setNumber(e.target.value);
   }
+  const handleShowContact = () => {
+    history.replace("/contacts/" + props.item.id);
+  }
 
   return (
     <div className="contactItem">
-      <div>
+      <div onClick={handleShowContact}>
         {isEdit ? (
           <form 
             className = "edit-form"

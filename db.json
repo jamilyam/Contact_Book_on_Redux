@@ -4,7 +4,8 @@
       "id": 1,
       "name": "Jamilya",
       "lastName": "Mambetalieva",
-      "number": "0770650005"
+      "number": "0770650005",
+      "updatedAt": "2020-09-24T16:38:24.534Z"
     },
     {
       "id": 2,
@@ -23,6 +24,14 @@
       "name": "Marat",
       "lastName": "Mambetaliev",
       "number": "775580777"
+    },
+    {
+      "id": 1600964995296,
+      "name": "John",
+      "lastName": "Smith",
+      "number": "0077777777",
+      "createdAt": "2020-09-24T16:29:55.296Z",
+      "updatedAt": "2020-09-24T16:30:08.299Z"
     }
   ]
 }
